@@ -95,15 +95,21 @@ public class Job {
 
     //toString will exist down here.
 
-//    @Override
-//    public String toString() {
-//        return "Job{" +
-//                "id=" + id +
-//                ", name='" + name + '\'' +
-//                ", employer=" + employer +
-//                ", location=" + location +
-//                ", positionType=" + positionType +
-//                ", coreCompetency=" + coreCompetency +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        String newLine = System.lineSeparator();
+
+        if (name == null && employer == null && location == null && positionType == null && coreCompetency == null) {
+            return "OOPS! This job does not seem to exist.";
+        }
+
+        return newLine +
+                "ID: " + id + newLine +
+                "Name: " + (!name.toString().isEmpty() ? name : "Data not available") + newLine +
+                "Employer: " + (!employer.toString().isEmpty() ? employer : "Data not available") + newLine +
+                "Location: " + (!location.toString().isEmpty() ? location : "Data not available") + newLine +
+                "Position Type: " + (!positionType.toString().isEmpty() ? positionType : "Data not available") + newLine +
+                "Core Competency: " + (!coreCompetency.toString().isEmpty() ? coreCompetency : "Data not available") +
+                newLine;
+    }
 }

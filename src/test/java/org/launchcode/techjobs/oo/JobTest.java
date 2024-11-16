@@ -39,4 +39,41 @@ public class JobTest {
         assertFalse(firstJob.equals(secondJob));
     }
 
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job testJob = new Job("Senior Service Specialist II", new Employer("Edward Jones"), new Location("Saint Louis"), new PositionType("Call Center"), new CoreCompetency("Mental Fortitude"));
+        String jobOutput = testJob.toString();
+        assertTrue(jobOutput.startsWith(System.lineSeparator()) && jobOutput.endsWith(System.lineSeparator()));
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+        Job testJob = new Job("Senior Service Specialist II", new Employer("Edward Jones"), new Location("Saint Louis"), new PositionType("Call Center"), new CoreCompetency("Mental Fortitude"));
+        String jobOutput = testJob.toString();
+        String newLine = System.lineSeparator();
+        String expectedOutput = newLine +
+                "ID: " + testJob.getId() + newLine +
+                "Name: Senior Service Specialist II" + newLine +
+                "Employer: Edward Jones" + newLine +
+                "Location: Saint Louis" + newLine +
+                "Position Type: Call Center" + newLine +
+                "Core Competency: Mental Fortitude" + newLine;
+        assertEquals(expectedOutput, jobOutput);
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+        Job testJob = new Job("Senior Service Specialist II", new Employer("Edward Jones"), new Location(""), new PositionType("Call Center"), new CoreCompetency("Mental Fortitude"));
+        String jobOutput = testJob.toString();
+        String newLine = System.lineSeparator();
+        String expectedOutput = newLine +
+                "ID: " + testJob.getId() + newLine +
+                "Name: Senior Service Specialist II" + newLine +
+                "Employer: Edward Jones" + newLine +
+                "Location: Data not available" + newLine +
+                "Position Type: Call Center" + newLine +
+                "Core Competency: Mental Fortitude" + newLine;
+        assertEquals(expectedOutput, jobOutput);
+    }
+
 }
