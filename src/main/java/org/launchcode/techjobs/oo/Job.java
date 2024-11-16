@@ -18,13 +18,14 @@ public class Job {
     //  the 'id' field.**
 
     //constructor to initialize a unique id
-    public Job(int id) {
-        this.id = id;
+    public Job() {
+        id = nextId;
+        nextId++;
     }
 
     //constructor to initialize everything else and calls the first constructor to initialize id field
     public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
-        this(nextId); //nextId might need to be changed.. this was a guess
+        this();
         this.name = name;
         this.employer = employer;
         this.location = location;
